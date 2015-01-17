@@ -1,0 +1,61 @@
+@model MVCAjaxFormUpload.Models.Product
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Ajax Form Upload</h2>
+
+@using (Ajax.BeginForm(actionName: "Index",
+                       controllerName: "Home",
+                       ajaxOptions: new AjaxOptions
+                       {
+                           HttpMethod = "POST",
+                           OnSuccess = "doUpload(data, status, xhr)"
+                       },
+                       routeValues: null,
+                       htmlAttributes: new { id = "uploadForm" }))
+{
+    <label>Name:</label>
+    @Html.TextBoxFor(model => model.Name)
+    <br />
+    <label>Image:</label>
+    <br />
+    <input type="file" name="Image1" id="Image1" />
+    <br />
+    <input type="submit" value="Submit" />
+    <img id="loading" src="~/Content/Images/loading.gif" style="display:none;">
+}
+
+@section Scripts
+{
+    <script type="text/javascript">
+        function doUpload(data, status, xhr) {
+            alert(data.result);
+            $("#loading").show();
+            $.ajaxFileUpload({
+                url: "@Url.Action("UploadFiles", "Home")", // „”Ì—Ì ﬂÂ »«Ìœ ›«Ì· »Â ¬‰ «—”«· ‘Êœ
+                secureuri: false,
+                fileElementId: 'Image1', // ¬Ì œÌ «·„«‰ Ê—ÊœÌ ›«Ì·
+                dataType: 'json',
+                data:
+                {
+                    id: data.Id /* «Ì‰ ¬Ì œÌ Å” «“ –ŒÌ—Â ‘œ‰ „Õ’Ê· œ— ”—Ê— «“ ¬‰ œ—Ì«›  „Ìù‘Êœ */,
+                    name1: 'test'
+                    // , ...
+                }, // «ÿ·«⁄«  «÷«›Ì œ— ’Ê—  ‰Ì«“
+                complete: function () {
+                    $("#loading").hide();
+                },
+                success: function (data, status) {
+                    if (typeof (data.FileName) != 'undefined') {
+                        alert(data.FileName);
+                    }
+                },
+                error: function (data, status, e) {
+                    alert(e);
+                    $("#loading").hide();
+                }
+            });
+        }
+    </script>
+}
