@@ -1,4 +1,4 @@
-@model MVCAjaxFormUpload.Models.Product
+ï»¿@model MVCAjaxFormUpload.Models.Product
 @{
     ViewBag.Title = "Index";
 }
@@ -33,16 +33,16 @@
             alert(data.result);
             $("#loading").show();
             $.ajaxFileUpload({
-                url: "@Url.Action("UploadFiles", "Home")", // ãÓíÑí ßå ÈÇíÏ İÇíá Èå Âä ÇÑÓÇá ÔæÏ
+                url: "@Url.Action("UploadFiles", "Home")", // Ù…Ø³ÙŠØ±ÙŠ ÙƒÙ‡ Ø¨Ø§ÙŠØ¯ ÙØ§ÙŠÙ„ Ø¨Ù‡ Ø¢Ù† Ø§Ø±Ø³Ø§Ù„ Ø´ÙˆØ¯
                 secureuri: false,
-                fileElementId: 'Image1', // Âí Ïí ÇáãÇä æÑæÏí İÇíá
+                fileElementId: 'Image1', // Ø¢ÙŠ Ø¯ÙŠ Ø§Ù„Ù…Ø§Ù† ÙˆØ±ÙˆØ¯ÙŠ ÙØ§ÙŠÙ„
                 dataType: 'json',
                 data:
                 {
-                    id: data.Id /* Çíä Âí Ïí Ó ÇÒ ĞÎíÑå ÔÏä ãÍÕæá ÏÑ ÓÑæÑ ÇÒ Âä ÏÑíÇİÊ ãíÔæÏ */,
+                    id: data.Id /* Ø§ÙŠÙ† Ø¢ÙŠ Ø¯ÙŠ Ù¾Ø³ Ø§Ø² Ø°Ø®ÙŠØ±Ù‡ Ø´Ø¯Ù† Ù…Ø­ØµÙˆÙ„ Ø¯Ø± Ø³Ø±ÙˆØ± Ø§Ø² Ø¢Ù† Ø¯Ø±ÙŠØ§ÙØª Ù…ÙŠâ€ŒØ´ÙˆØ¯ */,
                     name1: 'test'
                     // , ...
-                }, // ÇØáÇÚÇÊ ÇÖÇİí ÏÑ ÕæÑÊ äíÇÒ
+                }, // Ø§Ø·Ù„Ø§Ø¹Ø§Øª Ø§Ø¶Ø§ÙÙŠ Ø¯Ø± ØµÙˆØ±Øª Ù†ÙŠØ§Ø²
                 complete: function () {
                     $("#loading").hide();
                 },
