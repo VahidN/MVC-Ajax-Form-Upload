@@ -10,7 +10,7 @@
                        ajaxOptions: new AjaxOptions
                        {
                            HttpMethod = "POST",
-                           OnSuccess = "doUpload(data, status, xhr)"
+                           OnSuccess = "doUpload"
                        },
                        routeValues: null,
                        htmlAttributes: new { id = "uploadForm" }))
@@ -35,23 +35,23 @@
             $.ajaxFileUpload({
                 url: "@Url.Action("UploadFiles", "Home")", // مسيري كه بايد فايل به آن ارسال شود
                 secureuri: false,
-                fileElementId: 'Image1', // آي دي المان ورودي فايل
-                dataType: 'json',
+                fileElementId: "Image1", // آي دي المان ورودي فايل
+                dataType: "json",
                 data:
                 {
                     id: data.Id /* اين آي دي پس از ذخيره شدن محصول در سرور از آن دريافت مي‌شود */,
-                    name1: 'test'
+                    name1: "test"
                     // , ...
                 }, // اطلاعات اضافي در صورت نياز
                 complete: function () {
                     $("#loading").hide();
                 },
-                success: function (data, status) {
-                    if (typeof (data.FileName) != 'undefined') {
-                        alert(data.FileName);
+                success: function (successData, successStatus) {
+                    if (typeof (successData.FileName) != "undefined") {
+                        alert(successData.FileName);
                     }
                 },
-                error: function (data, status, e) {
+                error: function (errorData, errorStatus, e) {
                     alert(e);
                     $("#loading").hide();
                 }
