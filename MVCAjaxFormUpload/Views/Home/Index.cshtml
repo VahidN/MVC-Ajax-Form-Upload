@@ -18,9 +18,13 @@
     <label>Name:</label>
     @Html.TextBoxFor(model => model.Name)
     <br />
-    <label>Image:</label>
+    <label>Image 1:</label>
     <br />
     <input type="file" name="Image1" id="Image1" />
+    <br/>
+    <label>Image 2:</label>
+    <br />
+    <input type="file" name="Image2" id="Image2" />
     <br />
     <input type="submit" value="Submit" />
     <img id="loading" src="~/Content/Images/loading.gif" style="display:none;">
@@ -35,7 +39,7 @@
             $.ajaxFileUpload({
                 url: "@Url.Action("UploadFiles", "Home")", // مسيري كه بايد فايل به آن ارسال شود
                 secureuri: false,
-                fileElementId: "Image1", // آي دي المان ورودي فايل
+                formElementId: "uploadForm", // كدام فرم در صفحه پردازش شود؟
                 dataType: "json",
                 data:
                 {

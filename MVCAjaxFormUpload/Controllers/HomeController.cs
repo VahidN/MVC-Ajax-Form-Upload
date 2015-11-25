@@ -23,7 +23,7 @@ namespace MVCAjaxFormUpload.Controllers
         }
 
         [HttpPost]
-        public ActionResult UploadFiles(HttpPostedFileBase image1, int id)
+        public ActionResult UploadFiles(HttpPostedFileBase image1, HttpPostedFileBase image2, int id)
         {
             var isAjax = this.Request.IsAjaxRequest();
             Thread.Sleep(3000); // simulating a long running process
