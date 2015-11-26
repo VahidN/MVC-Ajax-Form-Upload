@@ -42,8 +42,8 @@ jQuery.extend({
             }
         }
 
-        $("#" + formElementId + " > input[type='file']").each(function () {
-            var oldElement = $(this);
+        $("#" + formElementId + " input[type='file']").each(function () {
+            var oldElement = jQuery(this);
             var newElement = jQuery(oldElement).clone();
             jQuery(oldElement).attr("id", fileId);
             jQuery(oldElement).before(newElement);
